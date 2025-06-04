@@ -1,0 +1,196 @@
+/* Reset básico */
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía y cuerpo */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url('/_img/escuela.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+
+/* Contenedor del formulario */
+.container {
+  background-color: #ffffff;
+  max-width: 760px;
+  width: 100%;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.3rem;
+  color: #1e88e5;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background-color: #1e88e5;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 5px;
+}
+
+/* Grupos de formulario */
+.form-group {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Campos interactivos */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #42a5f5;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(66, 165, 245, 0.15);
+  outline: none;
+}
+
+/* Placeholder animado (opcional) */
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: #bbb;
+}
+
+/* Radio y checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+  transform: scale(1.15);
+  accent-color: #1e88e5;
+  margin-right: 8px;
+}
+
+.inline-label {
+  display: inline-block;
+  font-weight: 500;
+  color: #37474f;
+  cursor: pointer;
+}
+
+/* Texto auxiliar */
+.form-text {
+  font-size: 0.85rem;
+  color: #607d8b;
+  margin-top: 4px;
+}
+
+/* Botones animados */
+button {
+  display: inline-block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #388e3c, #1b5e20);
+  transform: translateY(-2px);
+}
+
+button[type="button"] {
+  background: linear-gradient(135deg, #ffa726, #fb8c00);
+}
+
+button[type="button"]:hover {
+  background: linear-gradient(135deg, #fb8c00, #ef6c00);
+  transform: translateY(-2px);
+}
+
+/* Resultado del formulario */
+.resultado {
+  margin-top: 35px;
+  padding: 24px;
+  background-color: #e8f5e9;
+  border-left: 6px solid #66bb6a;
+  border-radius: 10px;
+  color: #2e7d32;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+.resultado h3 {
+  margin-bottom: 10px;
+}
+
+/* Datos mostrados */
+.dato {
+  background-color: #fefefe;
+  border-left: 4px solid #2196f3;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.etiqueta {
+  font-weight: 700;
+  color: #1565c0;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}

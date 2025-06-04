@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Inscripción Escuela - Formulario</title>
+    <link rel="stylesheet" href="./_css/estilos.css" />
+  </head>
+  <body>
+    <div class="form-header">
+  <img src="/_img/escuela.jpg" alt="Logo de la escuela" class="form-image" />
+</div>
+
+
+
+    <div class="container">
+      <h1>📝 Formulario de Inscripción Escolar</h1>
+
+      <form id="miFormulario">
+        <!-- Nombre completo -->
+        <div class="form-group">
+          <label for="nombre">Nombre completo:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            placeholder="Escribe tu nombre completo"
+            autofocus
+            pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,40}" />
+          <small class="form-text">Solo letras y espacios, 3-40 caracteres.</small>
+        </div>
+
+        <!-- Correo electrónico -->
+        <div class="form-group">
+          <label for="email">Correo electrónico:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="ejemplo@correo.com" />
+          <small class="form-text">Ejemplo: correo@ejemplo.com</small>
+        </div>
+
+        <!-- Edad -->
+        <div class="form-group">
+          <label for="edad">Edad:</label>
+          <input
+            type="number"
+            id="edad"
+            name="edad"
+            min="5"
+            max="18"
+            required
+            placeholder="Tu edad" />
+          <small class="form-text">Edad permitida: 5 a 18 años.</small>
+        </div>
+
+        <!-- Ciudad -->
+        <div class="form-group">
+          <label for="ciudad">Ciudad:</label>
+          <select
+            id="ciudad"
+            name="ciudad"
+            required>
+            <option value="">Selecciona tu ciudad</option>
+            <option value="bogota">Bogotá</option>
+            <option value="medellin">Medellín</option>
+            <option value="cali">Cali</option>
+            <option value="barranquilla">Barranquilla</option>
+            <option value="otra">Otra</option>
+          </select>
+        </div>
+
+        <!-- Grado al que se inscribe -->
+        <div class="form-group">
+          <label for="grado">Grado a inscribirse:</label>
+          <select id="grado" name="grado" required>
+            <option value="">Selecciona un grado</option>
+            <option value="primero">Primero</option>
+            <option value="segundo">Segundo</option>
+            <option value="tercero">Tercero</option>
+            <option value="cuarto">Cuarto</option>
+            <option value="quinto">Quinto</option>
+          </select>
+        </div>
+
+
+<!-- Nombre del acudiente -->
+        <div class="form-group">
+        <label for="acudiente">Nombre del acudiente:</label>
+    <input
+    type="text"
+    id="acudiente"
+    name="acudiente"
+    required
+    placeholder="Nombre del padre, madre o tutor legal"
+    pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,50}" />
+    <small class="form-text">Debe contener solo letras, mínimo 3 caracteres.</small>
+</div>
+
+    <!-- Teléfono de contacto -->
+<div class="form-group">
+        <label for="telefono">Teléfono de contacto:</label>
+    <input
+    type="tel"
+    id="telefono"
+    name="telefono"
+    required
+    placeholder="Ej. 3123456789"
+    pattern="[0-9]{10}" />
+    <small class="form-text">Debe contener 10 dígitos numéricos.</small>
+</div>
+
+        <!-- Experiencia previa (radio) -->
+        <div class="form-group">
+        <label>¿Has estudiado antes en alguna escuela?</label>
+        <input
+            type="radio"
+            id="si"
+            name="experiencia"
+            value="Sí"
+            required />
+        <label for="si" class="inline-label">Sí</label>
+
+        <input
+            type="radio"
+            id="no"
+            name="experiencia"
+            value="No" />
+        <label for="no" class="inline-label">No</label>
+        </div>
+
+        <!-- Curso favorito -->
+        <div class="form-group">
+        <label for="cursoFavorito">Curso favorito:</label>
+        <input
+            type="text"
+            id="cursoFavorito"
+            name="cursoFavorito"
+            placeholder="Ejemplo: Matemáticas, Arte, Ciencias" />
+        <small class="form-text">Opcional</small>
+        </div>
+
+        <!-- Acepto términos -->
+        <div class="form-group">
+        <input
+            type="checkbox"
+            id="acepto"
+            name="acepto"
+            required />
+        <label for="acepto" class="inline-label">
+            Acepto los términos y condiciones
+        </label>
+        </div>
+
+        <!-- Comentarios adicionales -->
+        <div class="form-group">
+        <label for="comentarios">Comentarios adicionales:</label>
+        <textarea
+            id="comentarios"
+            name="comentarios"
+            rows="4"
+            placeholder="Cuéntanos algo más sobre ti (opcional)"></textarea>
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit">🚀 Enviar Inscripción</button>
+    </form>
+
+    <div id="resultado" class="resultado" style="display:none;">
+        <h3>✅ ¡Inscripción enviada exitosamente!</h3>
+        <p>Estos son los datos que enviaste:</p>
+        <div id="datosEnviados"></div>
+    </div>
+    </div>
+
+    <script>
+    document.getElementById('miFormulario').addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        const formulario = evento.target;
+        const datosFormulario = new FormData(formulario);
+
+        let datosHTML = '';
+
+        for (let [campo, valor] of datosFormulario.entries()) {
+          let nombreCampo = campo;
+          switch (campo) {
+            case 'nombre':
+              nombreCampo = 'Nombre completo';
+              break;
+            case 'email':
+              nombreCampo = 'Correo electrónico';
+              break;
+            case 'edad':
+              nombreCampo = 'Edad';
+              break;
+            case 'ciudad':
+              nombreCampo = 'Ciudad';
+              break;
+            case 'grado':
+              nombreCampo = 'Grado a inscribirse';
+              break;
+            case 'experiencia':
+              nombreCampo = '¿Estudiaste antes?';
+              break;
+            case 'cursoFavorito':
+              nombreCampo = 'Curso favorito';
+              break;
+            case 'acepto':
+              nombreCampo = 'Términos aceptados';
+              valor = 'Sí';
+              break;
+            case 'comentarios':
+              nombreCampo = 'Comentarios adicionales';
+              break;
+          }
+
+          if (valor && valor.trim() !== '') {
+            datosHTML += `
+              <div class="dato">
+                <span class="etiqueta">${nombreCampo}:</span> ${valor}
+              </div>`;
+          }
+        }
+
+        document.getElementById('datosEnviados').innerHTML = datosHTML;
+        document.getElementById('resultado').style.display = 'block';
+
+        document.getElementById('resultado').scrollIntoView({
+          behavior: 'smooth',
+        });
+
+        alert('¡Formulario enviado correctamente! 🎉\nRevisa los datos más abajo.');
+      });
+
+      function limpiarFormulario() {
+        document.getElementById('miFormulario').reset();
+        document.getElementById('resultado').style.display = 'none';
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const contenedor = document.querySelector('.container');
+        const botonLimpiar = document.createElement('button');
+        botonLimpiar.innerHTML = '🗑️ Limpiar Formulario';
+        botonLimpiar.style.backgroundColor = '#ff9800';
+        botonLimpiar.style.marginTop = '10px';
+        botonLimpiar.type = 'button';
+        botonLimpiar.onclick = limpiarFormulario;
+        contenedor.appendChild(botonLimpiar);
+      });
+    </script>
+  </body>
+</html>
