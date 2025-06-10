@@ -65,7 +65,7 @@ Un botón adicional limpia el formulario con form.reset().
 ## README – Formulario de Inscripción Escolar (Explicación de Etiquetas)
 Este proyecto es un formulario web moderno diseñado para simular la inscripción de estudiantes a una escuela, con enfoque en las etiquetas HTML semánticas, estilos CSS interactivos y funcionalidades básicas con JavaScript puro.
 
-🧩 Estructura y Explicación de Etiquetas HTML
+ Estructura y Explicación de Etiquetas HTML
 html
 Copiar
 Editar
@@ -73,7 +73,7 @@ Editar
 <html lang="es"> ... </html>
 Declara el tipo de documento (HTML5) y el idioma principal (español).
 
-📌 Etiquetas usadas en el formulario
+ Etiquetas usadas en el formulario
 Etiqueta	Descripción
 <form>	Contenedor principal del formulario. Usa id para manejar eventos con JavaScript.
 <label>	Etiqueta asociada a cada campo (input, select, etc.) con el atributo for. Mejora accesibilidad.
